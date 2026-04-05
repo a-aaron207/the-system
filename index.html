@@ -12,95 +12,60 @@
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#04060f; --bg2:#070c1a; --panel:#0a1128; --panel2:#0d1530;
-  --border:#1a2a5e; --glow:#2a4aff;
-  --accent:#4d6fff; --accent2:#7b4fff;
-  --gold:#ffd700; --gold2:#ffaa00;
-  --text:#c8d8ff; --dim:#4a5a88; --white:#e8f0ff;
-  --red:#ff3a5c; --green:#00ff88; --cyan:#00d4ff; --orange:#ff7b00;
-  --safe-top:env(safe-area-inset-top); --safe-bot:env(safe-area-inset-bottom);
+:root{
+  --bg:#04060f;--bg2:#070c1a;--panel:#0a1128;--panel2:#0d1530;
+  --border:#1a2a5e;--glow:#2a4aff;
+  --accent:#4d6fff;--accent2:#7b4fff;
+  --gold:#ffd700;--gold2:#ffaa00;
+  --text:#c8d8ff;--dim:#4a5a88;--white:#e8f0ff;
+  --red:#ff3a5c;--green:#00ff88;--cyan:#00d4ff;--orange:#ff7b00;
+  --safe-top:env(safe-area-inset-top);--safe-bot:env(safe-area-inset-bottom);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overscroll-behavior:none}
-body{
-  background:var(--bg);color:var(--text);
-  font-family:'Rajdhani',sans-serif;
-  overflow:hidden;position:fixed;width:100%;height:100%;
-}
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:linear-gradient(rgba(77,111,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(77,111,255,.025) 1px,transparent 1px);
-  background-size:28px 28px;
-}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow:hidden;position:fixed;width:100%;height:100%}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(77,111,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(77,111,255,.025) 1px,transparent 1px);
+  background-size:28px 28px}
 
-/* ── SHELL ── */
 .app{position:relative;z-index:1;display:flex;flex-direction:column;height:100%;padding-top:var(--safe-top);padding-bottom:var(--safe-bot)}
 
-/* ── TOP BAR ── */
-.topbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:11px 16px;border-bottom:1px solid var(--border);
-  background:rgba(4,6,15,.97);flex-shrink:0;position:relative;z-index:20;
-}
-.topbar::after{
-  content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);
-  animation:glow 3s ease-in-out infinite;
-}
+/* TOP BAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--border);background:rgba(4,6,15,.97);flex-shrink:0;position:relative;z-index:20}
+.topbar::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);animation:glow 3s ease-in-out infinite}
 @keyframes glow{0%,100%{opacity:.3}50%{opacity:1}}
-
 .tb-title{font-family:'Orbitron',monospace;font-size:15px;font-weight:900;letter-spacing:3px;color:var(--white);text-shadow:0 0 12px rgba(77,111,255,.8)}
 .tb-title span{color:var(--accent2)}
-.tb-right{display:flex;align-items:center;gap:8px}
-.tb-mode{
-  font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;
-  padding:3px 9px;border:1px solid;cursor:pointer;transition:all .2s;
-}
+.tb-right{display:flex;align-items:center;gap:7px}
+.tb-mode{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;padding:3px 9px;border:1px solid;cursor:pointer;transition:all .2s}
 .tb-mode.focus{color:#00d4ff;border-color:#00d4ff;background:rgba(0,212,255,.08)}
 .tb-mode.grind{color:#ff3a5c;border-color:#ff3a5c;background:rgba(255,58,92,.08)}
 .tb-mode.recovery{color:#00ff88;border-color:#00ff88;background:rgba(0,255,136,.08)}
 .tb-lv{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--accent);border:1px solid var(--glow);padding:3px 9px;background:rgba(77,111,255,.08)}
 
-/* ── CONTENT ── */
+/* CONTENT */
 .content{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:12px;padding-bottom:76px}
 .content::-webkit-scrollbar{display:none}
 
-/* ── BOTTOM NAV ── */
+/* BOTTOM NAV */
 .bnav{display:flex;border-top:1px solid var(--border);background:rgba(4,6,15,.98);flex-shrink:0;position:relative;z-index:20}
-.nb{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:9px 4px;background:none;border:none;color:var(--dim);cursor:pointer;
-  gap:2px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;position:relative;
-  transition:color .2s;
-}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:9px 4px;background:none;border:none;color:var(--dim);cursor:pointer;gap:2px;font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;position:relative;transition:color .2s}
 .nb.active{color:var(--accent)}
-.nb.active::before{
-  content:'';position:absolute;top:0;left:15%;right:15%;height:2px;
-  background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 8px var(--accent);
-}
+.nb.active::before{content:'';position:absolute;top:0;left:15%;right:15%;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 0 8px var(--accent)}
 .nb-ic{font-size:19px}
 
-/* ── PAGES ── */
+/* PAGES */
 .page{display:none}.page.active{display:block}
 
-/* ── SECTION TITLE ── */
-.stitle{
-  font-family:'Orbitron',monospace;font-size:10px;font-weight:700;
-  letter-spacing:3px;color:var(--accent);margin-bottom:10px;
-  display:flex;align-items:center;gap:8px;
-}
+/* SECTION TITLE */
+.stitle{font-family:'Orbitron',monospace;font-size:10px;font-weight:700;letter-spacing:3px;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .stitle::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
 
-/* ── CARD ── */
-.card{
-  background:linear-gradient(135deg,rgba(10,17,40,.97),rgba(7,12,26,.97));
-  border:1px solid var(--border);padding:16px;margin-bottom:10px;position:relative;overflow:hidden;
-}
+/* CARD */
+.card{background:linear-gradient(135deg,rgba(10,17,40,.97),rgba(7,12,26,.97));border:1px solid var(--border);padding:16px;margin-bottom:10px;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(180deg,var(--accent),var(--accent2))}
 
-/* ── STATUS PAGE ── */
+/* PLAYER */
 .player-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
 .lhex{position:relative;width:68px;height:68px;flex-shrink:0}
 .lhex svg{width:100%;height:100%;filter:drop-shadow(0 0 8px rgba(77,111,255,.7));animation:hpulse 3s ease-in-out infinite}
@@ -111,17 +76,13 @@ body::before{
 .pname-in{font-family:'Orbitron',monospace;font-size:14px;font-weight:900;color:var(--white);background:transparent;border:none;border-bottom:1px solid var(--accent);outline:none;width:100%}
 .prank{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:2px;margin-top:3px}
 
+.xp-lbl{display:flex;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);margin-bottom:5px}
 .xpbar-wrap{height:7px;background:rgba(255,255,255,.04);border:1px solid var(--border);overflow:hidden;margin-bottom:3px}
 .xpbar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .8s cubic-bezier(.4,0,.2,1);box-shadow:0 0 8px rgba(77,111,255,.6);position:relative}
 .xpbar-fill::after{content:'';position:absolute;top:0;right:0;width:20px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4));animation:shine 2s ease-in-out infinite}
 @keyframes shine{0%,100%{opacity:0}50%{opacity:1}}
-.xp-lbl{display:flex;justify-content:space-between;font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);margin-bottom:5px}
 
-.sp-row{
-  display:flex;justify-content:space-between;align-items:center;
-  background:rgba(77,111,255,.08);border:1px solid var(--glow);
-  padding:8px 13px;margin-bottom:10px;
-}
+.sp-row{display:flex;justify-content:space-between;align-items:center;background:rgba(77,111,255,.08);border:1px solid var(--glow);padding:8px 13px;margin-bottom:10px}
 .sp-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--accent)}
 .sp-val{font-family:'Orbitron',monospace;font-size:16px;font-weight:900;color:var(--gold);text-shadow:0 0 8px rgba(255,215,0,.5)}
 
@@ -131,124 +92,112 @@ body::before{
 .stbar{flex:1;height:5px;background:rgba(255,255,255,.03);border:1px solid var(--border);overflow:hidden}
 .stfill{height:100%;transition:width .8s ease}
 .stval{font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:var(--white);width:24px;text-align:right;flex-shrink:0}
-.stbtn{
-  width:28px;height:28px;background:rgba(77,111,255,.1);border:1px solid var(--glow);
-  color:var(--accent);font-size:17px;cursor:pointer;display:flex;align-items:center;
-  justify-content:center;flex-shrink:0;transition:all .15s;border-radius:2px;line-height:1;
-}
+.stbtn{width:28px;height:28px;background:rgba(77,111,255,.1);border:1px solid var(--glow);color:var(--accent);font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s;border-radius:2px;line-height:1}
 .stbtn:active{background:var(--accent);color:var(--bg)}
 .stbtn:disabled{opacity:.2;cursor:not-allowed}
 
-/* SUMMARY GRID */
 .sum-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .sum-card{border:1px solid var(--border);padding:10px 6px;text-align:center;background:rgba(255,255,255,.02)}
 .sum-val{font-family:'Orbitron',monospace;font-size:18px;font-weight:900}
 .sum-lbl{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--dim);margin-top:2px;letter-spacing:1px}
 
-/* STREAK */
-.streak-bar{
-  display:flex;align-items:center;gap:10px;
-  border:1px solid var(--border);padding:10px 14px;margin-bottom:10px;
-  background:rgba(255,255,255,.02);
-}
-.streak-fire{font-size:22px}
-.streak-info{flex:1}
+.streak-bar{display:flex;align-items:center;gap:10px;border:1px solid var(--border);padding:10px 14px;margin-bottom:10px;background:rgba(255,255,255,.02)}
 .streak-num{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;color:var(--gold)}
 .streak-lbl{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--dim);letter-spacing:1px}
 .streak-bonus{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--green)}
 
-/* PENALTY */
-.penalty-alert{
-  display:none;border:1px solid var(--red);padding:12px 14px;margin-bottom:10px;
-  background:rgba(255,58,92,.07);animation:palert 1s ease-in-out infinite alternate;
-}
+.penalty-alert{display:none;border:1px solid var(--red);padding:12px 14px;margin-bottom:10px;background:rgba(255,58,92,.07);animation:palert 1s ease-in-out infinite alternate}
 @keyframes palert{from{border-color:rgba(255,58,92,.5)}to{border-color:var(--red)}}
 .penalty-title{font-family:'Orbitron',monospace;font-size:11px;color:var(--red);letter-spacing:2px;margin-bottom:4px}
 .penalty-msg{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim)}
 
-/* ── QUESTS PAGE ── */
+/* QUESTS */
 .q-add{margin-bottom:10px}
-.q-add-row1{display:flex;gap:7px;margin-bottom:7px}
-.q-add-row2{display:flex;gap:7px}
+.q-row{display:flex;gap:7px;margin-bottom:7px}
 .qin{flex:1;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--white);font-family:'Rajdhani',sans-serif;font-size:15px;padding:10px 12px;outline:none;min-width:0}
 .qin:focus{border-color:var(--accent)}
 .qin::placeholder{color:var(--dim);font-size:13px}
 select.qin{cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;padding:10px 8px;flex:0 0 auto;width:auto}
 select.qin option{background:var(--bg2)}
-.btn{
-  background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:white;
-  font-family:'Orbitron',monospace;font-size:10px;font-weight:700;letter-spacing:1px;
-  padding:10px 14px;cursor:pointer;white-space:nowrap;
-}
+
+/* REPEAT TOGGLE */
+.repeat-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border:1px solid var(--border);background:rgba(255,255,255,.02);margin-bottom:7px;cursor:pointer;user-select:none}
+.repeat-row.on{border-color:var(--accent2);background:rgba(123,79,255,.08)}
+.repeat-icon{font-size:16px}
+.repeat-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);flex:1;letter-spacing:1px}
+.repeat-row.on .repeat-lbl{color:var(--accent2)}
+.toggle{width:36px;height:20px;border-radius:10px;background:var(--border);position:relative;transition:background .2s;flex-shrink:0}
+.toggle.on{background:var(--accent2)}
+.toggle::after{content:'';position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:white;transition:transform .2s}
+.toggle.on::after{transform:translateX(16px)}
+
+.btn{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:white;font-family:'Orbitron',monospace;font-size:10px;font-weight:700;letter-spacing:1px;padding:10px 14px;cursor:pointer;white-space:nowrap}
 .btn:active{opacity:.8;transform:scale(.97)}
+.btn-sm{padding:7px 12px;font-size:9px}
 .btn-red{background:linear-gradient(135deg,#ff3a5c,#cc0033)}
 .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text)}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold))}
 
-.q-filter{display:flex;gap:6px;margin-bottom:12px}
-.fb{
-  font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:5px 11px;
-  border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;transition:all .2s;
-}
+.q-filter{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}
+.fb{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;padding:5px 11px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;transition:all .2s}
 .fb.active{background:rgba(77,111,255,.15);border-color:var(--accent);color:var(--accent)}
+.cat-filter{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+.cpill{font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;padding:3px 9px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer}
+.cpill.active{border-color:var(--accent2);color:var(--accent2);background:rgba(123,79,255,.1)}
 
-.qi{
-  display:flex;align-items:flex-start;gap:9px;padding:12px 13px;
-  border:1px solid var(--border);background:rgba(255,255,255,.02);margin-bottom:8px;
-  animation:qin 0.3s ease;transition:border-color .2s;
-}
-@keyframes qin{from{transform:translateX(-10px);opacity:0}to{transform:translateX(0);opacity:1}}
-.qi.done{opacity:.35}
-.qi.done .qname{text-decoration:line-through}
+.qi{display:flex;align-items:flex-start;gap:9px;padding:12px 13px;border:1px solid var(--border);background:rgba(255,255,255,.02);margin-bottom:8px;animation:qslide .3s ease;transition:border-color .2s}
+@keyframes qslide{from{transform:translateX(-10px);opacity:0}to{transform:translateX(0);opacity:1}}
+.qi.done{opacity:.35}.qi.done .qname{text-decoration:line-through}
 .qi.overdue{border-color:rgba(255,58,92,.5);background:rgba(255,58,92,.04)}
-
-.qcheck{
-  width:24px;height:24px;border:1px solid var(--glow);background:transparent;cursor:pointer;
-  flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:14px;color:var(--green);transition:all .2s;border-radius:2px;margin-top:1px;
-}
+.qi.repeating{border-left:3px solid var(--accent2)}
+.qcheck{width:24px;height:24px;border:1px solid var(--glow);background:transparent;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--green);transition:all .2s;border-radius:2px;margin-top:1px}
 .qcheck:active{background:rgba(0,255,136,.15)}
-
 .qi-body{flex:1;min-width:0}
 .qi-top{display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap}
 .qdiff{font-family:'Share Tech Mono',monospace;font-size:10px;padding:2px 7px;border:1px solid;flex-shrink:0}
-.diff-E{color:#888;border-color:#888}
-.diff-D{color:#00d4ff;border-color:#00d4ff}
-.diff-C{color:#00ff88;border-color:#00ff88}
-.diff-B{color:#ffd700;border-color:#ffd700}
-.diff-A{color:#ff7b00;border-color:#ff7b00}
-.diff-S{color:#ff3a5c;border-color:#ff3a5c;text-shadow:0 0 6px #ff3a5c}
+.diff-E{color:#888;border-color:#888}.diff-D{color:#00d4ff;border-color:#00d4ff}
+.diff-C{color:#00ff88;border-color:#00ff88}.diff-B{color:#ffd700;border-color:#ffd700}
+.diff-A{color:#ff7b00;border-color:#ff7b00}.diff-S{color:#ff3a5c;border-color:#ff3a5c;text-shadow:0 0 6px #ff3a5c}
 .qcat{font-family:'Share Tech Mono',monospace;font-size:9px;padding:2px 6px;border:1px solid var(--border);color:var(--dim)}
+.qrepeat-badge{font-family:'Share Tech Mono',monospace;font-size:9px;padding:2px 6px;border:1px solid var(--accent2);color:var(--accent2)}
 .qname{font-size:15px;font-weight:500;color:var(--white);word-break:break-word}
 .qi-meta{display:flex;align-items:center;gap:8px;margin-top:5px;flex-wrap:wrap}
 .qxp{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--gold)}
 .qdeadline{font-family:'Share Tech Mono',monospace;font-size:10px}
-.qdeadline.overdue{color:var(--red)}
-.qdeadline.soon{color:var(--orange)}
-.qdeadline.ok{color:var(--dim)}
+.qdeadline.overdue{color:var(--red)}.qdeadline.soon{color:var(--orange)}.qdeadline.ok{color:var(--dim)}
 .qpenalty{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red)}
-
 .qdel{background:none;border:none;color:var(--dim);cursor:pointer;font-size:20px;padding:0 2px;line-height:1;flex-shrink:0}
 .qdel:active{color:var(--red)}
 
-/* CATEGORY PILLS */
-.cat-filter{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
-.cpill{
-  font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:1px;
-  padding:3px 9px;border:1px solid var(--border);background:transparent;color:var(--dim);cursor:pointer;
-}
-.cpill.active{border-color:var(--accent2);color:var(--accent2);background:rgba(123,79,255,.1)}
-
-/* ── ACHIEVEMENTS ── */
+/* ACHIEVEMENTS */
 .ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.ach-card{border:1px solid var(--border);padding:14px 10px;text-align:center;background:rgba(255,255,255,.02);transition:all .3s}
+.ach-card{border:1px solid var(--border);padding:14px 10px;text-align:center;background:rgba(255,255,255,.02);transition:all .3s;position:relative;overflow:hidden}
 .ach-card.earned{border-color:var(--gold2);background:rgba(255,170,0,.07);box-shadow:0 0 14px rgba(255,170,0,.15)}
-.ach-ic{font-size:30px;display:block;margin-bottom:6px;filter:grayscale(1) opacity(.2);transition:filter .4s}
+.ach-card.earned::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ach-ic{font-size:28px;display:block;margin-bottom:6px;filter:grayscale(1) opacity(.2);transition:filter .4s}
 .ach-card.earned .ach-ic{filter:none}
 .ach-nm{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);display:block;letter-spacing:1px}
 .ach-card.earned .ach-nm{color:var(--gold)}
 .ach-desc{font-size:11px;color:var(--dim);margin-top:3px;font-family:'Rajdhani',sans-serif}
+.ach-prog{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--accent);margin-top:4px;display:block}
 
-/* ── REPORT PAGE ── */
+/* SETTINGS / BACKUP */
+.set-row{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--border);background:rgba(255,255,255,.02);margin-bottom:8px}
+.set-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text);letter-spacing:1px}
+.set-sub{font-family:'Share Tech Mono',monospace;font-size:9px;color:var(--dim);margin-top:2px;letter-spacing:1px}
+.set-btns{display:flex;gap:7px}
+
+/* NOTIFICATION PERMISSION */
+.perm-banner{background:rgba(77,111,255,.1);border:1px solid var(--glow);padding:11px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.perm-txt{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:1px}
+.perm-btn{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;white-space:nowrap}
+.perm-btn:active{background:var(--accent);color:var(--bg)}
+
+.sys-msg{font-family:'Share Tech Mono',monospace;font-size:12px;border:1px solid var(--border);padding:10px 13px;margin-bottom:10px;background:rgba(255,255,255,.02);line-height:1.7;animation:msgIn .5s ease}
+@keyframes msgIn{from{opacity:0}to{opacity:1}}
+.sys-prefix{color:var(--accent);margin-right:6px}
+
+/* REPORT */
 .rep-row{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;border:1px solid var(--border);margin-bottom:7px;background:rgba(255,255,255,.02)}
 .rep-lbl{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:1px}
 .rep-val{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;color:var(--white)}
@@ -256,47 +205,19 @@ select.qin option{background:var(--bg2)}
 .weak-title{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--red);letter-spacing:2px;margin-bottom:5px}
 .weak-msg{font-family:'Rajdhani',sans-serif;font-size:13px;color:var(--text)}
 
-/* ── LOG ── */
-.log-entry{
-  font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);
-  padding:7px 10px;border-left:2px solid var(--border);margin-bottom:5px;
-  background:rgba(255,255,255,.01);animation:lin .3s ease;line-height:1.6;
-}
-@keyframes lin{from{opacity:0;transform:translateX(-5px)}to{opacity:1;transform:translateX(0)}}
-.lt{color:var(--accent);margin-right:6px}
-.lxp{color:var(--gold)}
-.llv{color:var(--accent2);font-weight:bold}
-.lred{color:var(--red)}
-.lgrn{color:var(--green)}
+/* LOG */
+.log-entry{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);padding:7px 10px;border-left:2px solid var(--border);margin-bottom:5px;background:rgba(255,255,255,.01);line-height:1.6}
+.lt{color:var(--accent);margin-right:6px}.lxp{color:var(--gold)}.llv{color:var(--accent2);font-weight:bold}.lred{color:var(--red)}.lgrn{color:var(--green)}
 
-/* ── NOTIFICATION TOAST ── */
-.toast{
-  display:none;position:fixed;top:calc(58px + var(--safe-top));left:50%;
-  transform:translateX(-50%);background:var(--panel2);border:1px solid var(--accent);
-  padding:9px 18px;font-family:'Orbitron',monospace;font-size:10px;color:var(--white);
-  letter-spacing:2px;z-index:200;text-align:center;
-  box-shadow:0 0 25px rgba(77,111,255,.4);white-space:nowrap;max-width:90vw;
-  animation:tin .3s ease;
-}
+/* TOAST */
+.toast{display:none;position:fixed;top:calc(58px + var(--safe-top));left:50%;transform:translateX(-50%);background:var(--panel2);border:1px solid var(--accent);padding:9px 18px;font-family:'Orbitron',monospace;font-size:10px;color:var(--white);letter-spacing:2px;z-index:500;text-align:center;box-shadow:0 0 25px rgba(77,111,255,.4);white-space:nowrap;max-width:90vw;animation:tin .3s ease}
 @keyframes tin{from{transform:translateX(-50%) translateY(-10px);opacity:0}to{transform:translateX(-50%) translateY(0);opacity:1}}
 .toast.red{border-color:var(--red);box-shadow:0 0 20px rgba(255,58,92,.3)}
 .toast.gold{border-color:var(--gold);box-shadow:0 0 20px rgba(255,215,0,.3)}
+.toast.green{border-color:var(--green);box-shadow:0 0 20px rgba(0,255,136,.3)}
 
-/* ── SYSTEM MESSAGE ── */
-.sys-msg{
-  font-family:'Share Tech Mono',monospace;font-size:12px;
-  border:1px solid var(--border);padding:10px 13px;margin-bottom:10px;
-  background:rgba(255,255,255,.02);line-height:1.7;
-  animation:msgIn .5s ease;
-}
-@keyframes msgIn{from{opacity:0}to{opacity:1}}
-.sys-prefix{color:var(--accent);margin-right:6px}
-
-/* ── LEVEL UP ── */
-.lvlup{
-  display:none;position:fixed;inset:0;background:rgba(4,6,15,.93);
-  z-index:300;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;
-}
+/* LEVEL UP */
+.lvlup{display:none;position:fixed;inset:0;background:rgba(4,6,15,.93);z-index:300;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}
 .lvlup.show{display:flex}
 .lu-txt{font-family:'Orbitron',monospace;font-size:32px;font-weight:900;color:var(--white);letter-spacing:6px;text-shadow:0 0 40px rgba(77,111,255,1),0 0 80px rgba(77,111,255,.5);animation:lpulse .5s ease infinite alternate;margin-bottom:10px}
 .lu-num{font-family:'Orbitron',monospace;font-size:68px;font-weight:900;color:var(--accent);text-shadow:0 0 40px var(--accent);line-height:1;margin-bottom:14px;animation:lpulse .5s ease infinite alternate}
@@ -304,38 +225,65 @@ select.qin option{background:var(--bg2)}
 .lu-rank{font-family:'Orbitron',monospace;font-size:14px;letter-spacing:2px;margin-bottom:24px}
 .lu-ok{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text);letter-spacing:2px;border:1px solid var(--border);padding:10px 24px;background:transparent;cursor:pointer}
 @keyframes lpulse{from{transform:scale(.97)}to{transform:scale(1.03)}}
-
 .particle{position:fixed;width:4px;height:4px;border-radius:50%;pointer-events:none;z-index:299;animation:pf 1.5s ease-out forwards}
 @keyframes pf{from{opacity:1;transform:translate(0,0) scale(1)}to{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
 
-/* ── PERMISSION BANNER ── */
-.perm-banner{
-  background:rgba(77,111,255,.1);border:1px solid var(--glow);padding:11px 14px;
-  margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;gap:10px;
-}
-.perm-txt{font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:1px}
-.perm-btn{font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:1px;padding:5px 12px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;white-space:nowrap}
-.perm-btn:active{background:var(--accent);color:var(--bg)}
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(4,6,15,.85);z-index:400;align-items:center;justify-content:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:var(--panel2);border:1px solid var(--glow);padding:20px;width:100%;max-width:380px;position:relative}
+.modal-title{font-family:'Orbitron',monospace;font-size:13px;font-weight:700;letter-spacing:2px;color:var(--white);margin-bottom:16px}
+.modal-msg{font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text);line-height:1.8;margin-bottom:16px}
+.modal-btns{display:flex;gap:8px;justify-content:flex-end}
+.modal textarea{width:100%;height:120px;background:rgba(255,255,255,.03);border:1px solid var(--border);color:var(--text);font-family:'Share Tech Mono',monospace;font-size:10px;padding:10px;outline:none;resize:none;line-height:1.5;margin-bottom:10px}
 
 .empty{text-align:center;padding:44px 20px;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:2px;line-height:2}
+
+/* hidden file input */
+#importFile{display:none}
 </style>
 </head>
 <body>
 
-<!-- TOASTS -->
 <div class="toast" id="toast"></div>
 
-<!-- LEVEL UP OVERLAY -->
 <div class="lvlup" id="lvlup">
   <div class="lu-txt">LEVEL UP</div>
   <div class="lu-num" id="lu-num">2</div>
-  <div class="lu-sub" id="lu-sub">ALL STATS +1 | +5 STAT POINTS</div>
+  <div class="lu-sub" id="lu-sub"></div>
   <div class="lu-rank" id="lu-rank"></div>
   <button class="lu-ok" onclick="dismissLU()">[ CONTINUE ]</button>
 </div>
 
+<!-- CONFIRM MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle">CONFIRM</div>
+    <div class="modal-msg" id="modalMsg"></div>
+    <div class="modal-btns">
+      <button class="btn btn-outline btn-sm" onclick="modalResolve(false)">CANCEL</button>
+      <button class="btn btn-red btn-sm" id="modalOkBtn" onclick="modalResolve(true)">CONFIRM</button>
+    </div>
+  </div>
+</div>
+
+<!-- IMPORT MODAL -->
+<div class="modal-bg" id="importModal">
+  <div class="modal">
+    <div class="modal-title">◈ RESTORE DATA</div>
+    <div class="modal-msg">Paste your backup JSON below, or use the file picker. Your existing data will be replaced.</div>
+    <textarea id="importTA" placeholder='{"name":"PLAYER","level":1,...}'></textarea>
+    <div class="modal-btns">
+      <button class="btn btn-outline btn-sm" onclick="document.getElementById('importModal').classList.remove('show')">CANCEL</button>
+      <button class="btn btn-sm" onclick="document.getElementById('importFile').click()">📁 FILE</button>
+      <button class="btn btn-gold btn-sm" onclick="doImport()">RESTORE</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="importFile" accept=".json" onchange="importFromFile(event)">
+
 <div class="app">
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="tb-title">THE <span>SYSTEM</span></div>
     <div class="tb-right">
@@ -344,21 +292,18 @@ select.qin option{background:var(--bg2)}
     </div>
   </div>
 
-  <!-- CONTENT -->
   <div class="content" id="mainContent">
 
-    <!-- STATUS -->
+    <!-- STATUS PAGE -->
     <div class="page active" id="pg-status">
       <div id="permBanner" class="perm-banner" style="display:none">
         <span class="perm-txt">⚡ ENABLE NOTIFICATIONS FOR OVERDUE ALERTS</span>
         <button class="perm-btn" onclick="reqNotifPerm()">ALLOW</button>
       </div>
-
       <div id="penaltyAlert" class="penalty-alert">
         <div class="penalty-title">⚠ DISCIPLINE FAILING</div>
         <div class="penalty-msg" id="penaltyMsg"></div>
       </div>
-
       <div class="card">
         <div class="player-header">
           <div class="lhex">
@@ -378,26 +323,21 @@ select.qin option{background:var(--bg2)}
         <div class="xp-lbl"><span>EXPERIENCE</span><span id="xpLbl">0 / 100</span></div>
         <div class="xpbar-wrap"><div class="xpbar-fill" id="xpFill" style="width:0%"></div></div>
       </div>
-
       <div class="streak-bar" id="streakBar">
-        <div class="streak-fire" id="streakFire">🔥</div>
-        <div class="streak-info">
+        <div style="font-size:22px" id="streakFire">🔥</div>
+        <div style="flex:1">
           <div class="streak-num" id="streakNum">0 DAYS</div>
           <div class="streak-lbl">CURRENT STREAK</div>
           <div class="streak-bonus" id="streakBonus"></div>
         </div>
       </div>
-
       <div class="sp-row">
         <span class="sp-lbl">AVAILABLE STAT POINTS</span>
         <span class="sp-val" id="spVal">0</span>
       </div>
-
       <div id="sysMsg"></div>
-
       <div class="stitle">◈ ATTRIBUTES</div>
       <div id="statsContainer"></div>
-
       <div class="stitle" style="margin-top:14px">◈ DAILY REPORT</div>
       <div class="sum-grid">
         <div class="sum-card"><div class="sum-val" style="color:var(--gold)" id="sumXp">0</div><div class="sum-lbl">XP TODAY</div></div>
@@ -406,60 +346,124 @@ select.qin option{background:var(--bg2)}
       </div>
     </div>
 
-    <!-- QUESTS -->
+    <!-- QUESTS PAGE -->
     <div class="page" id="pg-quests">
-      <div class="q-add card" style="padding:14px">
-        <div class="q-add-row1">
-          <input class="qin" id="qname" placeholder="Quest name..." onkeydown="if(event.key==='Enter')document.getElementById('qdeadlineIn').focus()">
+      <div class="card q-add">
+        <div class="q-row">
+          <input class="qin" id="qname" placeholder="Quest name..." onkeydown="if(event.key==='Enter')document.getElementById('qdiff').focus()">
           <select class="qin" id="qdiff">
             <option value="E">E</option><option value="D">D</option>
             <option value="C" selected>C</option><option value="B">B</option>
             <option value="A">A</option><option value="S">S</option>
           </select>
         </div>
-        <div class="q-add-row2">
+        <div class="q-row">
           <select class="qin" id="qcat">
             <option value="BODY">💪 BODY</option><option value="MIND">🧠 MIND</option>
             <option value="DISCIPLINE">⚔️ DISCIPLINE</option><option value="KNOWLEDGE">📚 KNOWLEDGE</option>
             <option value="SOCIAL">🤝 SOCIAL</option>
           </select>
           <input class="qin" id="qdeadlineIn" type="datetime-local" style="flex:1;min-width:0;font-family:'Share Tech Mono',monospace;font-size:11px;color:var(--text)">
-          <button class="btn" onclick="addQuest()">+ADD</button>
+        </div>
+        <!-- REPEAT TOGGLE -->
+        <div class="repeat-row" id="repeatRow" onclick="toggleRepeat()">
+          <span class="repeat-icon">🔁</span>
+          <span class="repeat-lbl">REPEAT DAILY (auto-reschedule same time next day)</span>
+          <div class="toggle" id="repeatToggle"></div>
+        </div>
+        <div class="q-row">
+          <button class="btn" style="flex:1" onclick="addQuest()">+ ADD QUEST</button>
         </div>
       </div>
 
       <div class="cat-filter" id="catFilter">
         <button class="cpill active" onclick="filterCat('ALL',this)">ALL</button>
-        <button class="cpill" onclick="filterCat('BODY',this)">💪</button>
-        <button class="cpill" onclick="filterCat('MIND',this)">🧠</button>
-        <button class="cpill" onclick="filterCat('DISCIPLINE',this)">⚔️</button>
-        <button class="cpill" onclick="filterCat('KNOWLEDGE',this)">📚</button>
-        <button class="cpill" onclick="filterCat('SOCIAL',this)">🤝</button>
+        <button class="cpill" onclick="filterCat('BODY',this)">💪 BODY</button>
+        <button class="cpill" onclick="filterCat('MIND',this)">🧠 MIND</button>
+        <button class="cpill" onclick="filterCat('DISCIPLINE',this)">⚔️ DISC</button>
+        <button class="cpill" onclick="filterCat('KNOWLEDGE',this)">📚 KNOW</button>
+        <button class="cpill" onclick="filterCat('SOCIAL',this)">🤝 SOC</button>
       </div>
-
       <div class="q-filter">
         <button class="fb active" onclick="filterQ('all',this)">ALL</button>
         <button class="fb" onclick="filterQ('active',this)">ACTIVE</button>
+        <button class="fb" onclick="filterQ('repeat',this)">🔁 DAILY</button>
         <button class="fb" onclick="filterQ('overdue',this)">OVERDUE</button>
         <button class="fb" onclick="filterQ('done',this)">CLEARED</button>
       </div>
-
       <div id="questList"></div>
     </div>
 
-    <!-- ACHIEVEMENTS -->
+    <!-- ACHIEVEMENTS PAGE -->
     <div class="page" id="pg-achieve">
       <div class="stitle">◈ TITLES & ACHIEVEMENTS</div>
+      <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim);margin-bottom:12px;letter-spacing:1px" id="achProgress"></div>
       <div class="ach-grid" id="achGrid"></div>
     </div>
 
-    <!-- REPORT -->
+    <!-- REPORT PAGE -->
     <div class="page" id="pg-report">
       <div class="stitle">◈ SYSTEM ANALYSIS</div>
       <div id="reportContent"></div>
     </div>
 
-    <!-- LOG -->
+    <!-- SETTINGS PAGE -->
+    <div class="page" id="pg-settings">
+      <div class="stitle">◈ DATA MANAGEMENT</div>
+
+      <div class="set-row">
+        <div>
+          <div class="set-lbl">📤 EXPORT BACKUP</div>
+          <div class="set-sub">DOWNLOAD ALL PROGRESS AS JSON</div>
+        </div>
+        <button class="btn btn-sm" onclick="exportBackup()">EXPORT</button>
+      </div>
+
+      <div class="set-row">
+        <div>
+          <div class="set-lbl">📥 IMPORT / RESTORE</div>
+          <div class="set-sub">RESTORE FROM A BACKUP FILE</div>
+        </div>
+        <button class="btn btn-sm" onclick="document.getElementById('importModal').classList.add('show')">IMPORT</button>
+      </div>
+
+      <div class="set-row">
+        <div>
+          <div class="set-lbl">📋 COPY TO CLIPBOARD</div>
+          <div class="set-sub">COPY BACKUP JSON TO CLIPBOARD</div>
+        </div>
+        <button class="btn btn-sm" onclick="copyBackup()">COPY</button>
+      </div>
+
+      <div class="set-row" style="border-color:rgba(255,58,92,.3)">
+        <div>
+          <div class="set-lbl" style="color:var(--red)">🗑 RESET ALL DATA</div>
+          <div class="set-sub">WIPE EVERYTHING. CANNOT BE UNDONE.</div>
+        </div>
+        <button class="btn btn-red btn-sm" onclick="confirmReset()">RESET</button>
+      </div>
+
+      <div class="stitle" style="margin-top:16px">◈ NOTIFICATIONS</div>
+      <div class="set-row">
+        <div>
+          <div class="set-lbl">🔔 NOTIFICATION PERMISSION</div>
+          <div class="set-sub" id="notifStatus">CHECKING...</div>
+        </div>
+        <button class="btn btn-sm" onclick="reqNotifPerm()" id="notifBtn">ENABLE</button>
+      </div>
+
+      <div class="stitle" style="margin-top:16px">◈ APP INFO</div>
+      <div class="set-row">
+        <div><div class="set-lbl">VERSION</div></div>
+        <div style="font-family:'Orbitron',monospace;font-size:12px;color:var(--accent)">v3.0</div>
+      </div>
+      <div class="set-row">
+        <div><div class="set-lbl">DATA KEY</div></div>
+        <div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:var(--dim)">system_v3</div>
+      </div>
+    </div>
+
+    <!-- LOG PAGE -->
     <div class="page" id="pg-log">
       <div class="stitle">◈ SYSTEM LOG</div>
       <div id="logList"></div>
@@ -467,323 +471,467 @@ select.qin option{background:var(--bg2)}
 
   </div>
 
-  <!-- BOTTOM NAV -->
   <div class="bnav">
     <button class="nb active" onclick="goPage('status',this)"><span class="nb-ic">◈</span>STATUS</button>
     <button class="nb" onclick="goPage('quests',this)"><span class="nb-ic">⚔</span>QUESTS</button>
     <button class="nb" onclick="goPage('achieve',this)"><span class="nb-ic">🏆</span>TITLES</button>
     <button class="nb" onclick="goPage('report',this)"><span class="nb-ic">📊</span>REPORT</button>
-    <button class="nb" onclick="goPage('log',this)"><span class="nb-ic">📜</span>LOG</button>
+    <button class="nb" onclick="goPage('settings',this)"><span class="nb-ic">⚙️</span>SETTINGS</button>
   </div>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════════════════
-// DATA DEFINITIONS
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// CONSTANTS
+// ═══════════════════════════════════════════════════════════
 const RANKS   = ['E','D','C','B','A','S','SS','SSS','MONARCH'];
 const RCOLORS = ['#888','#00d4ff','#00ff88','#ffd700','#ff7b00','#ff3a5c','#ff3a5c','#ff3a5c','#ffd700'];
 const XP_DIFF = {E:10,D:20,C:35,B:55,A:80,S:120};
 const PEN_DIFF= {E:5, D:10,C:18,B:28,A:40,S:60};
 const SP_DIFF = {E:1, D:1, C:1, B:2, A:2, S:3};
 const XPneeded= l => Math.floor(100*Math.pow(1.3,l-1));
-
-const CATS_STAT = {BODY:'str',MIND:'int',DISCIPLINE:'per',KNOWLEDGE:'int',SOCIAL:'agi'};
-const CAT_ICONS = {BODY:'💪',MIND:'🧠',DISCIPLINE:'⚔️',KNOWLEDGE:'📚',SOCIAL:'🤝'};
-
-const STATS_DEF = [
-  {key:'str',name:'STRENGTH', icon:'⚔️',color:'#ff4a4a'},
-  {key:'agi',name:'AGILITY',  icon:'💨',color:'#00d4ff'},
-  {key:'vit',name:'VITALITY', icon:'❤️', color:'#ff3a5c'},
+const CATS_STAT={BODY:'str',MIND:'int',DISCIPLINE:'per',KNOWLEDGE:'int',SOCIAL:'agi'};
+const CAT_ICONS={BODY:'💪',MIND:'🧠',DISCIPLINE:'⚔️',KNOWLEDGE:'📚',SOCIAL:'🤝'};
+const MODES=['focus','grind','recovery'];
+const MODE_XP ={focus:1,grind:1.5,recovery:0.8};
+const STATS_DEF=[
+  {key:'str',name:'STRENGTH',icon:'⚔️',color:'#ff4a4a'},
+  {key:'agi',name:'AGILITY', icon:'💨',color:'#00d4ff'},
+  {key:'vit',name:'VITALITY',icon:'❤️', color:'#ff3a5c'},
   {key:'int',name:'INTELLECT',icon:'🧠',color:'#7b4fff'},
-  {key:'per',name:'SENSE',    icon:'👁️',color:'#ffd700'},
+  {key:'per',name:'SENSE',   icon:'👁️',color:'#ffd700'},
 ];
-
-const MODES = ['focus','grind','recovery'];
-const MODE_MSGS = {
-  focus:    'FOCUS MODE — Distractions eliminated. Execute.',
-  grind:    'GRIND MODE — No excuses. No rest. Rise.',
-  recovery: 'RECOVERY MODE — Rebuild. Return stronger.',
+const SYS_MSGS={
+  focus:['Focus engaged. Weakness is not an option.','Task queue analyzed. Execute without hesitation.','Efficiency optimal. Proceed.'],
+  grind:['Grind protocol active. Rest is for the defeated.','Push beyond your limits. Every task is survival.','Delay detected. Discipline dropping. Rectify.'],
+  recovery:['Recovery mode. Sustainable growth is still growth.','Lighter load engaged. Efficiency restored.','System recalibrating. Do not stop completely.'],
+  penalty:['Tasks ignored. XP penalty applied.','Overdue detected. Discipline stat degrading.','Failure to complete assigned quests. Consequence enacted.'],
 };
-const MODE_XP_MULT = {focus:1,grind:1.5,recovery:0.8};
 
+// ── ACHIEVEMENTS (30 total) ──────────────────────────────────────
 const ACHIEVES = [
-  {id:'first',    icon:'⚔️',  name:'FIRST BLOOD',   desc:'Clear 1 quest',      cond:s=>s.totalDone>=1},
-  {id:'ten',      icon:'🗡️',  name:'VETERAN',        desc:'Clear 10 quests',    cond:s=>s.totalDone>=10},
-  {id:'fifty',    icon:'👑',  name:'LEGEND',          desc:'Clear 50 quests',    cond:s=>s.totalDone>=50},
-  {id:'hundred',  icon:'💀',  name:'ASCENDED',        desc:'Clear 100 quests',   cond:s=>s.totalDone>=100},
-  {id:'lvl5',     icon:'⬆️',  name:'RISING',          desc:'Reach level 5',      cond:s=>s.level>=5},
-  {id:'lvl10',    icon:'🔥',  name:'AWAKENED',        desc:'Reach level 10',     cond:s=>s.level>=10},
-  {id:'lvl20',    icon:'⚡',  name:'HUNTER',          desc:'Reach level 20',     cond:s=>s.level>=20},
-  {id:'lvl40',    icon:'💎',  name:'S-RANK',          desc:'Reach level 40',     cond:s=>s.level>=40},
-  {id:'streak3',  icon:'🌟',  name:'DISCIPLINED',     desc:'3-day streak',       cond:s=>s.streak>=3},
-  {id:'streak7',  icon:'🔮',  name:'IRON WILL',       desc:'7-day streak',       cond:s=>s.streak>=7},
-  {id:'streak30', icon:'🏆',  name:'MONARCH WILL',    desc:'30-day streak',      cond:s=>s.streak>=30},
-  {id:'nopenalty',icon:'🛡️',  name:'CLEAN RECORD',    desc:'No penalties ever',  cond:s=>s.totalPenalties===0&&s.totalDone>=10},
-  {id:'maxbody',  icon:'💪',  name:'PEAK BODY',       desc:'STR+VIT reach 30',   cond:s=>s.stats.str>=30&&s.stats.vit>=30},
-  {id:'monarch',  icon:'👹',  name:'SHADOW MONARCH',  desc:'Reach level 100',    cond:s=>s.level>=100},
+  // Quest count
+  {id:'first',    icon:'⚔️', name:'FIRST BLOOD',    desc:'Clear 1 quest',           prog:s=>[s.totalDone,1],        cond:s=>s.totalDone>=1},
+  {id:'ten',      icon:'🗡️', name:'VETERAN',         desc:'Clear 10 quests',         prog:s=>[s.totalDone,10],       cond:s=>s.totalDone>=10},
+  {id:'fifty',    icon:'👑', name:'LEGEND',           desc:'Clear 50 quests',         prog:s=>[s.totalDone,50],       cond:s=>s.totalDone>=50},
+  {id:'hundred',  icon:'💀', name:'ASCENDED',         desc:'Clear 100 quests',        prog:s=>[s.totalDone,100],      cond:s=>s.totalDone>=100},
+  {id:'fivehun',  icon:'🌌', name:'TRANSCENDENT',     desc:'Clear 500 quests',        prog:s=>[s.totalDone,500],      cond:s=>s.totalDone>=500},
+  // Levels
+  {id:'lvl5',     icon:'⬆️', name:'RISING',           desc:'Reach level 5',           prog:s=>[s.level,5],            cond:s=>s.level>=5},
+  {id:'lvl10',    icon:'🔥', name:'AWAKENED',          desc:'Reach level 10',          prog:s=>[s.level,10],           cond:s=>s.level>=10},
+  {id:'lvl20',    icon:'⚡', name:'HUNTER',            desc:'Reach level 20',          prog:s=>[s.level,20],           cond:s=>s.level>=20},
+  {id:'lvl40',    icon:'💎', name:'S-RANK',            desc:'Reach level 40',          prog:s=>[s.level,40],           cond:s=>s.level>=40},
+  {id:'lvl100',   icon:'👹', name:'SHADOW MONARCH',    desc:'Reach level 100',         prog:s=>[s.level,100],          cond:s=>s.level>=100},
+  // Streaks
+  {id:'streak3',  icon:'🌟', name:'DISCIPLINED',       desc:'3-day streak',            prog:s=>[s.streak,3],           cond:s=>s.streak>=3},
+  {id:'streak7',  icon:'🔮', name:'IRON WILL',         desc:'7-day streak',            prog:s=>[s.streak,7],           cond:s=>s.streak>=7},
+  {id:'streak14', icon:'🧊', name:'UNBREAKABLE',       desc:'14-day streak',           prog:s=>[s.streak,14],          cond:s=>s.streak>=14},
+  {id:'streak30', icon:'🏆', name:'MONARCH WILL',      desc:'30-day streak',           prog:s=>[s.streak,30],          cond:s=>s.streak>=30},
+  // Stats
+  {id:'str20',    icon:'💪', name:'IRON FIST',         desc:'STR reaches 20',          prog:s=>[s.stats.str,20],       cond:s=>s.stats.str>=20},
+  {id:'agi20',    icon:'💨', name:'SHADOW STEP',       desc:'AGI reaches 20',          prog:s=>[s.stats.agi,20],       cond:s=>s.stats.agi>=20},
+  {id:'int20',    icon:'📖', name:'SCHOLAR',           desc:'INT reaches 20',          prog:s=>[s.stats.int,20],       cond:s=>s.stats.int>=20},
+  {id:'allstat10',icon:'✨', name:'BALANCED',          desc:'All stats reach 10',      prog:s=>[Math.min(...Object.values(s.stats)),10], cond:s=>Object.values(s.stats).every(v=>v>=10)},
+  {id:'allstat30',icon:'🌠', name:'PEAK FORM',         desc:'All stats reach 30',      prog:s=>[Math.min(...Object.values(s.stats)),30], cond:s=>Object.values(s.stats).every(v=>v>=30)},
+  // Category specialists
+  {id:'bodyspec', icon:'🏋️', name:'BODY SPECIALIST',   desc:'20 BODY quests done',     prog:s=>[s.catDone?.BODY||0,20], cond:s=>(s.catDone?.BODY||0)>=20},
+  {id:'mindspec', icon:'🧠', name:'MIND SPECIALIST',   desc:'20 MIND quests done',     prog:s=>[s.catDone?.MIND||0,20], cond:s=>(s.catDone?.MIND||0)>=20},
+  {id:'discspec', icon:'🗡️', name:'IRON DISCIPLINE',   desc:'20 DISCIPLINE quests',    prog:s=>[s.catDone?.DISCIPLINE||0,20], cond:s=>(s.catDone?.DISCIPLINE||0)>=20},
+  // Repeating quests
+  {id:'firstrep', icon:'🔁', name:'ROUTINE BORN',      desc:'Complete a daily quest',  prog:s=>[s.totalRepeatDone||0,1], cond:s=>(s.totalRepeatDone||0)>=1},
+  {id:'rep50',    icon:'♾️', name:'MACHINE',           desc:'50 daily quest completions', prog:s=>[s.totalRepeatDone||0,50], cond:s=>(s.totalRepeatDone||0)>=50},
+  // Penalty-related
+  {id:'nopenalty',icon:'🛡️', name:'CLEAN RECORD',      desc:'No penalties + 10 done',  prog:s=>[s.totalPenalties===0&&s.totalDone>=10?1:0,1], cond:s=>s.totalPenalties===0&&s.totalDone>=10},
+  // S-rank quests
+  {id:'firstS',   icon:'🔴', name:'S-RANK HUNTER',     desc:'Complete an S-rank quest', prog:s=>[s.sRankDone||0,1],     cond:s=>(s.sRankDone||0)>=1},
+  {id:'tenS',     icon:'💥', name:'RAID BOSS',         desc:'Complete 10 S-rank quests',prog:s=>[s.sRankDone||0,10],    cond:s=>(s.sRankDone||0)>=10},
+  // XP milestones (total lifetime)
+  {id:'xp1000',   icon:'⭐', name:'XP GRINDER',        desc:'Earn 1000 total XP',      prog:s=>[s.lifetimeXp||0,1000], cond:s=>(s.lifetimeXp||0)>=1000},
+  {id:'xp10000',  icon:'🌟', name:'XP HUNTER',         desc:'Earn 10,000 total XP',    prog:s=>[s.lifetimeXp||0,10000],cond:s=>(s.lifetimeXp||0)>=10000},
+  // Grind mode
+  {id:'grindmode',icon:'😤', name:'GRINDER',           desc:'Complete 5 quests in grind mode', prog:s=>[s.grindDone||0,5], cond:s=>(s.grindDone||0)>=5},
 ];
 
-const SYS_MSGS = {
-  focus: [
-    'Focus engaged. Weakness is not an option.',
-    'Task queue analyzed. Execute without hesitation.',
-    'Efficiency optimal. Proceed.',
-  ],
-  grind: [
-    'Grind protocol active. Rest is for the defeated.',
-    'Push beyond your limits. Every task is survival.',
-    'Delay detected. Discipline dropping. Rectify immediately.',
-  ],
-  recovery: [
-    'Recovery mode. Sustainable growth is still growth.',
-    'Lighter load engaged. Efficiency restored over time.',
-    'System recalibrating. Do not stop completely.',
-  ],
-  penalty: [
-    'Tasks ignored. XP penalty applied.',
-    'Overdue detected. Discipline stat degrading.',
-    'Failure to complete assigned quests. Consequence enacted.',
-  ],
-};
-
-// ═══════════════════════════════════════════════════════════════════
-// STATE (IndexedDB-backed, localStorage fallback)
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// STATE + MIGRATION
+// ═══════════════════════════════════════════════════════════
 const DB_KEY = 'system_v3';
+// Also check older key from previous versions
+const OLD_KEYS = ['sl_system','sl_v2'];
 
-function defaultState() {
+function defaultState(){
   return {
-    name:'PLAYER', level:1, xp:0, sp:0, mode:'focus',
+    name:'PLAYER',level:1,xp:0,sp:0,mode:'focus',
     stats:{str:1,agi:1,vit:1,int:1,per:1},
-    quests:[], achievements:[], log:[],
-    totalDone:0, totalPenalties:0,
-    todayXp:0, todayDone:0, todayPenalties:0,
-    lastDay:'', streak:0, streakLastDay:'',
-    notifGranted:false,
-    weekStats:{}, // { 'YYYY-MM-DD': { done, xp, penalty } }
+    quests:[],achievements:[],log:[],
+    totalDone:0,totalPenalties:0,totalRepeatDone:0,sRankDone:0,grindDone:0,
+    catDone:{BODY:0,MIND:0,DISCIPLINE:0,KNOWLEDGE:0,SOCIAL:0},
+    lifetimeXp:0,
+    todayXp:0,todayDone:0,todayPenalties:0,
+    lastDay:'',streak:0,
+    notifGranted:false,weekStats:{},
+    _version:3
   };
 }
 
+// MIGRATION: merge old state fields into new default without losing data
+function migrate(old){
+  const def = defaultState();
+  // Deep merge — old values take priority for existing fields
+  const merged = Object.assign({}, def, old);
+  // Ensure nested objects exist
+  if(!merged.stats) merged.stats = def.stats;
+  else merged.stats = Object.assign({...def.stats}, old.stats||{});
+  if(!merged.catDone) merged.catDone = def.catDone;
+  else merged.catDone = Object.assign({...def.catDone}, old.catDone||{});
+  if(!merged.weekStats) merged.weekStats = {};
+  // Add new fields that didn't exist before
+  if(merged.lifetimeXp === undefined) merged.lifetimeXp = merged.xp || 0;
+  if(merged.totalRepeatDone === undefined) merged.totalRepeatDone = 0;
+  if(merged.sRankDone === undefined) merged.sRankDone = 0;
+  if(merged.grindDone === undefined) merged.grindDone = 0;
+  // Migrate quests: add new fields to existing quests
+  if(merged.quests) {
+    merged.quests = merged.quests.map(q => ({
+      repeat: false, penalized: false, cat: 'DISCIPLINE', ...q
+    }));
+  }
+  merged._version = 3;
+  return merged;
+}
+
 function save(s){ try{localStorage.setItem(DB_KEY,JSON.stringify(s));}catch(e){} }
+
 function load(){
+  // Try current key first
   try{
-    const d=localStorage.getItem(DB_KEY);
-    if(!d) return null;
-    const p=JSON.parse(d);
-    // Merge with defaults to add new fields
-    return Object.assign(defaultState(),p);
-  }catch(e){return null;}
+    const d = localStorage.getItem(DB_KEY);
+    if(d){ const p=JSON.parse(d); return migrate(p); }
+  }catch(e){}
+  // Try old keys (migration from v1/v2)
+  for(const k of OLD_KEYS){
+    try{
+      const d = localStorage.getItem(k);
+      if(d){
+        const p = JSON.parse(d);
+        const migrated = migrate(p);
+        save(migrated); // save under new key
+        // Don't delete old key in case user rolls back
+        return migrated;
+      }
+    }catch(e){}
+  }
+  return null;
 }
 
 let S = load() || defaultState();
-let qFilter='all', catFilter='ALL';
+let qFilter='all', catFilter='ALL', repeatOn=false;
 
 // ── DAILY RESET ──────────────────────────────────────────────────
 const today = new Date().toDateString();
-const todayISO = new Date().toISOString().split('T')[0];
-
 if(S.lastDay !== today){
-  // Apply overdue penalties before reset
   applyOverduePenalties(true);
-
-  // Streak logic
+  // Streak
   if(S.lastDay){
-    const last=new Date(S.lastDay);
-    const diff=(new Date(today)-last)/(86400000);
-    if(diff<=1.5) S.streak++;
-    else S.streak=0;
+    const diff=(new Date(today)-new Date(S.lastDay))/86400000;
+    S.streak = diff<=1.5 ? S.streak+1 : 0;
   }
-
   // Save yesterday's stats
   if(S.lastDay){
     const yk=new Date(S.lastDay).toISOString().split('T')[0];
     if(!S.weekStats) S.weekStats={};
-    S.weekStats[yk]={done:S.todayDone,xp:S.todayXp,penalty:S.todayPenalties};
-    // Keep only 30 days
+    S.weekStats[yk]={done:S.todayDone,xp:S.todayXp,pen:S.todayPenalties};
     const keys=Object.keys(S.weekStats).sort();
     if(keys.length>30) keys.slice(0,keys.length-30).forEach(k=>delete S.weekStats[k]);
   }
-
+  // Auto-reschedule repeating quests
+  rescheduleRepeating();
   S.todayXp=0; S.todayDone=0; S.todayPenalties=0;
   S.lastDay=today;
   save(S);
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
+// REPEATING QUESTS
+// ═══════════════════════════════════════════════════════════
+function rescheduleRepeating(){
+  const now = Date.now();
+  S.quests.forEach(q=>{
+    if(!q.repeat) return;
+    if(q.done){
+      // Reset for next day
+      q.done = false;
+      q.penalized = false;
+      // Advance deadline by 24h
+      if(q.deadline) q.deadline += 86400000;
+    } else if(q.deadline && q.deadline < now){
+      // Missed — advance anyway
+      q.penalized = false;
+      while(q.deadline < now) q.deadline += 86400000;
+    }
+  });
+}
+
+function toggleRepeat(){
+  repeatOn = !repeatOn;
+  const row = document.getElementById('repeatRow');
+  const tog = document.getElementById('repeatToggle');
+  row.classList.toggle('on', repeatOn);
+  tog.classList.toggle('on', repeatOn);
+}
+
+// ═══════════════════════════════════════════════════════════
 // NOTIFICATIONS
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function reqNotifPerm(){
+  if(!('Notification' in window)){ showToast('NOT SUPPORTED ON THIS BROWSER','red'); return; }
   Notification.requestPermission().then(p=>{
     S.notifGranted=(p==='granted');
     save(S);
     document.getElementById('permBanner').style.display='none';
+    updateNotifStatus();
     if(S.notifGranted){
-      showToast('✓ NOTIFICATIONS ENABLED','gold');
+      showToast('✓ NOTIFICATIONS ENABLED','green');
       addLog('<span class="lgrn">Notification system online.</span>');
+      // Send test notification
+      setTimeout(()=>sendNotif('⚡ THE SYSTEM','Notification system is online, Hunter.',false),500);
+    } else {
+      showToast('NOTIFICATIONS BLOCKED','red');
     }
     render();
   });
 }
 
-function sendNotif(title, body, urgent=false){
-  if(!('Notification' in window)) return;
-  if(Notification.permission!=='granted') return;
-  const n=new Notification(title,{
-    body, icon:'icons/icon-192.png', badge:'icons/icon-192.png',
-    vibrate: urgent?[200,100,200,100,400]:[100,50,100],
-    requireInteraction: urgent,
-    tag: urgent?'overdue':'system',
-  });
-  n.onclick=()=>{ window.focus(); n.close(); };
+function updateNotifStatus(){
+  const el = document.getElementById('notifStatus');
+  const btn = document.getElementById('notifBtn');
+  if(!('Notification' in window)){
+    el.textContent='NOT SUPPORTED'; btn.disabled=true; return;
+  }
+  const p = Notification.permission;
+  if(p==='granted'){ el.textContent='✓ GRANTED — NOTIFICATIONS ACTIVE'; el.style.color='var(--green)'; btn.textContent='TEST'; btn.onclick=()=>sendNotif('⚡ THE SYSTEM','Test notification from your System.'); }
+  else if(p==='denied'){ el.textContent='✗ DENIED — ENABLE IN BROWSER SETTINGS'; el.style.color='var(--red)'; btn.textContent='DENIED'; btn.disabled=true; }
+  else { el.textContent='NOT YET GRANTED'; el.style.color='var(--dim)'; btn.textContent='ENABLE'; btn.onclick=reqNotifPerm; }
 }
 
-// Show permission banner if not yet decided
-if(Notification.permission==='default'){
+function sendNotif(title, body, urgent=false, tag='system'){
+  if(!('Notification' in window)) return;
+  if(Notification.permission!=='granted') return;
+  try{
+    const n = new Notification(title, {
+      body, icon:'icons/icon-192.png', badge:'icons/icon-192.png',
+      vibrate: urgent?[200,100,200,100,400]:[100,50,100],
+      requireInteraction: urgent,
+      tag, silent: false,
+    });
+    n.onclick = ()=>{ window.focus(); n.close(); };
+  }catch(e){
+    // Fallback via SW
+    if('serviceWorker' in navigator && navigator.serviceWorker.controller){
+      navigator.serviceWorker.ready.then(reg=>{
+        reg.showNotification(title,{body,icon:'icons/icon-192.png',vibrate:[100,50,100],tag});
+      }).catch(()=>{});
+    }
+  }
+}
+
+// Show permission banner
+if('Notification' in window && Notification.permission==='default'){
   setTimeout(()=>{ document.getElementById('permBanner').style.display='flex'; },1500);
-} else if(Notification.permission==='granted'){
+} else if('Notification' in window && Notification.permission==='granted'){
   S.notifGranted=true;
 }
 
-// ═══════════════════════════════════════════════════════════════════
-// OVERDUE PENALTY ENGINE
-// ═══════════════════════════════════════════════════════════════════
+// ── Overdue checker (every 60s when app open) ──
+let _overdueNotified = new Set(S.quests.filter(q=>q.penalized).map(q=>q.id));
+let _upcomingNotified = new Set();
+
+function checkOverdueLoop(){
+  applyOverduePenalties(false);
+  checkUpcomingReminders();
+  render(); save(S);
+}
+setInterval(checkOverdueLoop, 60000);
+
+function checkUpcomingReminders(){
+  const now=Date.now(), ten=600000;
+  S.quests.forEach(q=>{
+    if(q.done||!q.deadline||_upcomingNotified.has(q.id)) return;
+    const diff=q.deadline-now;
+    if(diff>0&&diff<=ten){
+      _upcomingNotified.add(q.id);
+      sendNotif('⏰ QUEST DUE SOON',`"${q.name}" — due in ${Math.ceil(diff/60000)} min`,false,'upcoming');
+      addLog(`<span style="color:var(--orange)">REMINDER: "${q.name}" due in ${Math.ceil(diff/60000)} min</span>`);
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════
+// OVERDUE PENALTIES
+// ═══════════════════════════════════════════════════════════
 function applyOverduePenalties(silent=false){
   const now=Date.now();
   let totalPen=0;
   S.quests.forEach(q=>{
-    if(q.done||q.penalized) return;
-    if(q.deadline && q.deadline<now){
-      const pen=Math.floor(PEN_DIFF[q.diff]*getModeXPMult());
-      S.xp=Math.max(0,S.xp-pen);
-      totalPen+=pen;
-      S.totalPenalties++;
-      S.todayPenalties++;
-      q.penalized=true;
-      if(!silent) addLog(`<span class="lred">PENALTY: "${q.name}" overdue — −${pen} XP</span>`);
-    }
+    if(q.done||q.penalized||!q.deadline||q.deadline>now) return;
+    const pen=Math.floor(PEN_DIFF[q.diff]*getModeXPMult());
+    S.xp=Math.max(0,S.xp-pen);
+    totalPen+=pen; S.totalPenalties++; S.todayPenalties++;
+    q.penalized=true;
+    _overdueNotified.add(q.id);
+    if(!silent) addLog(`<span class="lred">PENALTY: "${q.name}" overdue — −${pen} XP</span>`);
   });
   if(totalPen>0&&!silent){
     showToast(`⚠ OVERDUE PENALTY: −${totalPen} XP`,'red');
-    sendNotif('⚠ TASK OVERDUE',`You lost ${totalPen} XP. Complete your quests, Hunter.`,true);
+    sendNotif('⚠ QUEST OVERDUE',`You lost ${totalPen} XP for overdue quests. Fix it, Hunter.`,true,'overdue');
     showPenaltyAlert();
   }
 }
 
 function showPenaltyAlert(){
   const msgs=SYS_MSGS.penalty;
-  const el=document.getElementById('penaltyAlert');
   document.getElementById('penaltyMsg').textContent=msgs[Math.floor(Math.random()*msgs.length)];
+  const el=document.getElementById('penaltyAlert');
   el.style.display='block';
   setTimeout(()=>el.style.display='none',8000);
 }
 
-// ── OVERDUE CHECKER (runs every 60s when app open) ──────────────
-let _overdueInterval=null;
-function startOverdueChecker(){
-  if(_overdueInterval) return;
-  _overdueInterval=setInterval(()=>{
-    applyOverduePenalties(false);
-    checkUpcomingReminders();
-    render();
-    save(S);
-  },60000);
+// ═══════════════════════════════════════════════════════════
+// BACKUP / RESTORE
+// ═══════════════════════════════════════════════════════════
+function exportBackup(){
+  const json = JSON.stringify(S, null, 2);
+  const blob = new Blob([json], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const date = new Date().toISOString().split('T')[0];
+  a.href=url; a.download=`system-backup-${date}.json`;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+  showToast('✓ BACKUP EXPORTED','green');
+  addLog('<span class="lgrn">Data backup exported.</span>');
 }
 
-// Upcoming reminder (10 min before deadline)
-let _notifiedUpcoming=new Set();
-function checkUpcomingReminders(){
-  const now=Date.now();
-  const ten=10*60*1000;
-  S.quests.forEach(q=>{
-    if(q.done||!q.deadline||_notifiedUpcoming.has(q.id)) return;
-    const diff=q.deadline-now;
-    if(diff>0&&diff<=ten){
-      _notifiedUpcoming.add(q.id);
-      sendNotif('⏰ QUEST DEADLINE SOON',`"${q.name}" due in ${Math.ceil(diff/60000)} min`,false);
-      addLog(`<span style="color:var(--orange)">REMINDER: "${q.name}" due soon</span>`);
-    }
+async function copyBackup(){
+  try{
+    await navigator.clipboard.writeText(JSON.stringify(S,null,2));
+    showToast('✓ COPIED TO CLIPBOARD','green');
+  }catch(e){
+    // Fallback
+    const ta=document.createElement('textarea');
+    ta.value=JSON.stringify(S,null,2);
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    showToast('✓ COPIED TO CLIPBOARD','green');
+  }
+}
+
+function importFromFile(e){
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=(ev)=>{
+    document.getElementById('importTA').value=ev.target.result;
+  };
+  reader.readAsText(file);
+  e.target.value='';
+}
+
+function doImport(){
+  const raw=document.getElementById('importTA').value.trim();
+  if(!raw){ showToast('NO DATA PROVIDED','red'); return; }
+  try{
+    const parsed=JSON.parse(raw);
+    if(typeof parsed.level!=='number'||typeof parsed.name!=='string')
+      throw new Error('Invalid structure');
+    S = migrate(parsed);
+    save(S);
+    document.getElementById('importModal').classList.remove('show');
+    document.getElementById('importTA').value='';
+    showToast('✓ DATA RESTORED','green');
+    addLog('<span class="lgrn">Data restored from backup.</span>');
+    render();
+  }catch(e){
+    showToast('INVALID BACKUP FILE','red');
+  }
+}
+
+// RESET
+let _modalResolveFunc=null;
+function showModal(title,msg,okLabel='CONFIRM',okClass='btn-red'){
+  return new Promise(res=>{
+    _modalResolveFunc=res;
+    document.getElementById('modalTitle').textContent=title;
+    document.getElementById('modalMsg').textContent=msg;
+    document.getElementById('modalOkBtn').textContent=okLabel;
+    document.getElementById('modalOkBtn').className=`btn btn-sm ${okClass}`;
+    document.getElementById('modalBg').classList.add('show');
   });
 }
+function modalResolve(val){
+  document.getElementById('modalBg').classList.remove('show');
+  if(_modalResolveFunc){ _modalResolveFunc(val); _modalResolveFunc=null; }
+}
 
-startOverdueChecker();
+async function confirmReset(){
+  const ok=await showModal(
+    '⚠ RESET ALL DATA',
+    'This will permanently delete ALL your progress — level, quests, achievements, streaks. This cannot be undone. Are you sure?',
+    'WIPE IT','btn-red'
+  );
+  if(!ok) return;
+  localStorage.removeItem(DB_KEY);
+  OLD_KEYS.forEach(k=>localStorage.removeItem(k));
+  S=defaultState();
+  save(S);
+  showToast('DATA WIPED. START OVER.','red');
+  addLog('System reset. New journey begins.');
+  render();
+}
 
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // RENDER
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function render(){
   const ri=Math.min(Math.floor((S.level-1)/5),RANKS.length-1);
-
-  // Top bar
   document.getElementById('tbLv').textContent=`LVL ${S.level}`;
   const mb=document.getElementById('modeBtn');
-  mb.textContent=S.mode.toUpperCase();
-  mb.className=`tb-mode ${S.mode}`;
-
-  // Level + XP
+  mb.textContent=S.mode.toUpperCase(); mb.className=`tb-mode ${S.mode}`;
   document.getElementById('lvlNum').textContent=S.level;
   const need=XPneeded(S.level);
-  const pct=Math.min((S.xp/need)*100,100);
-  document.getElementById('xpFill').style.width=pct+'%';
+  document.getElementById('xpFill').style.width=Math.min((S.xp/need)*100,100)+'%';
   document.getElementById('xpLbl').textContent=`${S.xp} / ${need}`;
-
-  // Rank
   document.getElementById('prank').textContent=`[ ${RANKS[ri]}-RANK ]`;
   document.getElementById('prank').style.color=RCOLORS[ri];
   document.getElementById('prank').style.textShadow=`0 0 8px ${RCOLORS[ri]}`;
-
-  // Name
   document.getElementById('pnameD').textContent=S.name||'PLAYER';
-
-  // SP
   document.getElementById('spVal').textContent=S.sp;
-
   // Streak
-  const sf=document.getElementById('streakFire');
+  const sb=document.getElementById('streakFire');
+  sb.textContent=S.streak>=7?'🔥':S.streak>=3?'🌟':'💤';
   document.getElementById('streakNum').textContent=`${S.streak} DAY${S.streak!==1?'S':''}`;
-  sf.textContent = S.streak>=7?'🔥':S.streak>=3?'🌟':'💤';
   const bonus=getStreakBonus();
   document.getElementById('streakBonus').textContent=bonus>0?`+${Math.round(bonus*100)}% XP BONUS`:'';
   document.getElementById('streakBar').style.borderColor=S.streak>=3?'var(--gold)':'var(--border)';
-
-  // System message
-  renderSysMsg();
-
-  // Stats
+  // Sys msg
+  const msgs=SYS_MSGS[S.mode];
+  document.getElementById('sysMsg').innerHTML=`<div class="sys-msg"><span class="sys-prefix">[SYSTEM]</span>${msgs[Math.floor(Date.now()/10000)%msgs.length]}</div>`;
   renderStats();
-
-  // Summary
+  const overdue=S.quests.filter(q=>!q.done&&q.deadline&&q.deadline<Date.now()).length;
   document.getElementById('sumXp').textContent=S.todayXp;
   document.getElementById('sumDone').textContent=S.todayDone;
-  const overdue=S.quests.filter(q=>!q.done&&q.deadline&&q.deadline<Date.now()).length;
   document.getElementById('sumOver').textContent=overdue;
-
-  // Quests + Achievements + Report + Log
-  renderQuests();
-  renderAchieves();
-  renderReport();
-  renderLog();
-}
-
-function renderSysMsg(){
-  const el=document.getElementById('sysMsg');
-  const msgs=SYS_MSGS[S.mode];
-  const msg=msgs[Math.floor(Date.now()/10000)%msgs.length];
-  el.innerHTML=`<div class="sys-msg"><span class="sys-prefix">[SYSTEM]</span>${msg}</div>`;
+  renderQuests(); renderAchieves(); renderReport(); renderLog();
+  updateNotifStatus();
 }
 
 function renderStats(){
-  const c=document.getElementById('statsContainer');
-  c.innerHTML='';
+  const c=document.getElementById('statsContainer'); c.innerHTML='';
   STATS_DEF.forEach(s=>{
     const v=S.stats[s.key];
-    const pct=Math.min((v/100)*100,100);
-    const row=document.createElement('div');
-    row.className='stat-row';
+    const row=document.createElement('div'); row.className='stat-row';
     row.innerHTML=`
-      <span class="stic">${s.icon}</span>
-      <span class="stnm">${s.name}</span>
-      <div class="stbar"><div class="stfill" style="width:${pct}%;background:${s.color};box-shadow:0 0 5px ${s.color}80"></div></div>
+      <span class="stic">${s.icon}</span><span class="stnm">${s.name}</span>
+      <div class="stbar"><div class="stfill" style="width:${Math.min((v/100)*100,100)}%;background:${s.color};box-shadow:0 0 5px ${s.color}80"></div></div>
       <span class="stval">${v}</span>
       <button class="stbtn" onclick="addStat('${s.key}')" ${S.sp<=0?'disabled':''}>${S.sp>0?'+':'—'}</button>
     `;
@@ -795,46 +943,40 @@ function renderQuests(){
   const list=document.getElementById('questList');
   const now=Date.now();
   let qs=[...S.quests];
-
   if(catFilter!=='ALL') qs=qs.filter(q=>q.cat===catFilter);
   if(qFilter==='active') qs=qs.filter(q=>!q.done);
+  if(qFilter==='repeat') qs=qs.filter(q=>q.repeat);
   if(qFilter==='overdue') qs=qs.filter(q=>!q.done&&q.deadline&&q.deadline<now);
   if(qFilter==='done') qs=qs.filter(q=>q.done);
-
-  if(!qs.length){
-    list.innerHTML=`<div class="empty">${qFilter==='overdue'?'✓ NO OVERDUE QUESTS':'NO QUESTS FOUND<br>ADD A QUEST TO BEGIN'}</div>`;
-    return;
-  }
-
+  if(!qs.length){ list.innerHTML=`<div class="empty">${qFilter==='overdue'?'✓ NO OVERDUE QUESTS':'NO QUESTS FOUND'}</div>`; return; }
   list.innerHTML='';
   qs.forEach(q=>{
-    const isOverdue=!q.done&&q.deadline&&q.deadline<now;
+    const isOver=!q.done&&q.deadline&&q.deadline<now;
     const isSoon=!q.done&&q.deadline&&(q.deadline-now)<=600000&&q.deadline>now;
-    const item=document.createElement('div');
-    item.className='qi'+(q.done?' done':'')+(isOverdue?' overdue':'');
-
+    const xpActual=Math.floor(XP_DIFF[q.diff]*getModeXPMult()*(1+getStreakBonus()));
     let dlHtml='';
     if(q.deadline){
       const dl=new Date(q.deadline);
       const dlStr=dl.toLocaleDateString()+' '+dl.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
-      const cls=isOverdue?'overdue':isSoon?'soon':'ok';
-      const prefix=isOverdue?'⚠ OVERDUE: ':isSoon?'⏰ SOON: ':'📅 ';
-      dlHtml=`<span class="qdeadline ${cls}">${prefix}${dlStr}</span>`;
+      const cls=isOver?'overdue':isSoon?'soon':'ok';
+      const pfx=isOver?'⚠ ':isSoon?'⏰ ':'📅 ';
+      dlHtml=`<span class="qdeadline ${cls}">${pfx}${dlStr}</span>`;
     }
-    const penHtml=isOverdue&&!q.penalized?`<span class="qpenalty">−${PEN_DIFF[q.diff]} XP RISK</span>`:'';
-    const xpActual=Math.floor(XP_DIFF[q.diff]*getModeXPMult()*(1+getStreakBonus()));
-
+    const item=document.createElement('div');
+    item.className='qi'+(q.done?' done':'')+(isOver?' overdue':'')+(q.repeat?' repeating':'');
     item.innerHTML=`
       <div class="qcheck" onclick="completeQ('${q.id}')">${q.done?'✓':''}</div>
       <div class="qi-body">
         <div class="qi-top">
           <span class="qdiff diff-${q.diff}">${q.diff}</span>
           <span class="qcat">${CAT_ICONS[q.cat]||''} ${q.cat}</span>
+          ${q.repeat?'<span class="qrepeat-badge">🔁 DAILY</span>':''}
         </div>
         <div class="qname">${esc(q.name)}</div>
         <div class="qi-meta">
           <span class="qxp">+${xpActual} XP</span>
-          ${dlHtml}${penHtml}
+          ${dlHtml}
+          ${isOver&&!q.penalized?`<span class="qpenalty">−${PEN_DIFF[q.diff]} XP RISK</span>`:''}
         </div>
       </div>
       <button class="qdel" onclick="delQ('${q.id}')">×</button>
@@ -844,13 +986,20 @@ function renderQuests(){
 }
 
 function renderAchieves(){
-  const g=document.getElementById('achGrid');
-  g.innerHTML='';
+  const g=document.getElementById('achGrid'); g.innerHTML='';
+  const earned=S.achievements.length;
+  document.getElementById('achProgress').textContent=`${earned} / ${ACHIEVES.length} UNLOCKED`;
   ACHIEVES.forEach(a=>{
-    const earned=S.achievements.includes(a.id);
-    const c=document.createElement('div');
-    c.className='ach-card'+(earned?' earned':'');
-    c.innerHTML=`<span class="ach-ic">${a.icon}</span><span class="ach-nm">${a.name}</span><span class="ach-desc">${a.desc}</span>`;
+    const isEarned=S.achievements.includes(a.id);
+    const [cur,max]=a.prog(S);
+    const pct=Math.min(Math.floor((cur/max)*100),100);
+    const c=document.createElement('div'); c.className='ach-card'+(isEarned?' earned':'');
+    c.innerHTML=`
+      <span class="ach-ic">${a.icon}</span>
+      <span class="ach-nm">${a.name}</span>
+      <span class="ach-desc">${a.desc}</span>
+      ${!isEarned?`<span class="ach-prog">${cur}/${max} (${pct}%)</span>`:''}
+    `;
     g.appendChild(c);
   });
 }
@@ -860,95 +1009,95 @@ function renderReport(){
   const now=Date.now();
   const overdue=S.quests.filter(q=>!q.done&&q.deadline&&q.deadline<now).length;
   const active=S.quests.filter(q=>!q.done).length;
-
-  // Weak area detection
-  const minStat=STATS_DEF.reduce((a,b)=>S.stats[a.key]<S.stats[b.key]?a:b);
-  const catCounts={};
-  S.quests.filter(q=>q.done).forEach(q=>{ catCounts[q.cat]=(catCounts[q.cat]||0)+1; });
-  const allCats=['BODY','MIND','DISCIPLINE','KNOWLEDGE','SOCIAL'];
-  const weakCat=allCats.reduce((a,b)=>(catCounts[a]||0)<(catCounts[b]||0)?a:b);
-
+  const repeating=S.quests.filter(q=>q.repeat).length;
   const ri=Math.min(Math.floor((S.level-1)/5),RANKS.length-1);
-  const mult=MODE_XP_MULT[S.mode];
-
+  const minStat=STATS_DEF.reduce((a,b)=>S.stats[a.key]<S.stats[b.key]?a:b);
+  const allCats=['BODY','MIND','DISCIPLINE','KNOWLEDGE','SOCIAL'];
+  const weakCat=allCats.reduce((a,b)=>(S.catDone[a]||0)<(S.catDone[b]||0)?a:b);
   el.innerHTML=`
     <div class="rep-row"><span class="rep-lbl">PLAYER LEVEL</span><span class="rep-val" style="color:var(--accent)">${S.level}</span></div>
     <div class="rep-row"><span class="rep-lbl">CURRENT RANK</span><span class="rep-val" style="color:${RCOLORS[ri]}">${RANKS[ri]}</span></div>
-    <div class="rep-row"><span class="rep-lbl">MODE MULTIPLIER</span><span class="rep-val" style="color:var(--gold)">${mult}×</span></div>
+    <div class="rep-row"><span class="rep-lbl">LIFETIME XP</span><span class="rep-val" style="color:var(--gold)">${S.lifetimeXp||0}</span></div>
+    <div class="rep-row"><span class="rep-lbl">MODE BONUS</span><span class="rep-val" style="color:var(--gold)">${MODE_XP[S.mode]}× XP</span></div>
     <div class="rep-row"><span class="rep-lbl">STREAK</span><span class="rep-val" style="color:var(--gold)">${S.streak} DAYS</span></div>
     <div class="rep-row"><span class="rep-lbl">TOTAL QUESTS DONE</span><span class="rep-val">${S.totalDone}</span></div>
-    <div class="rep-row"><span class="rep-lbl">ACTIVE QUESTS</span><span class="rep-val" style="color:var(--cyan)">${active}</span></div>
-    <div class="rep-row"><span class="rep-lbl">OVERDUE QUESTS</span><span class="rep-val" style="color:${overdue>0?'var(--red)':'var(--green)'}">${overdue}</span></div>
+    <div class="rep-row"><span class="rep-lbl">DAILY QUESTS</span><span class="rep-val" style="color:var(--accent2)">${repeating}</span></div>
+    <div class="rep-row"><span class="rep-lbl">OVERDUE</span><span class="rep-val" style="color:${overdue>0?'var(--red)':'var(--green)'}">${overdue}</span></div>
     <div class="rep-row"><span class="rep-lbl">TOTAL PENALTIES</span><span class="rep-val" style="color:var(--red)">${S.totalPenalties}</span></div>
-    <div class="rep-row"><span class="rep-lbl">TODAY XP</span><span class="rep-val" style="color:var(--gold)">${S.todayXp}</span></div>
-
     <div class="stitle" style="margin-top:14px">◈ WEAK AREAS</div>
     <div class="weak-area">
-      <div class="weak-title">⚠ ATTRIBUTE GAP DETECTED</div>
-      <div class="weak-msg">Lowest stat: <strong>${minStat.name}</strong> (${S.stats[minStat.key]}). Allocate stat points or focus ${minStat.name.toLowerCase()}-based quests.</div>
+      <div class="weak-title">⚠ ATTRIBUTE GAP</div>
+      <div class="weak-msg">Lowest: <strong>${minStat.name}</strong> (${S.stats[minStat.key]}). Focus ${minStat.name.toLowerCase()}-based quests.</div>
     </div>
     <div class="weak-area" style="border-color:rgba(255,170,0,.3);background:rgba(255,170,0,.04)">
       <div class="weak-title" style="color:var(--gold2)">⚡ NEGLECTED CATEGORY</div>
-      <div class="weak-msg">Fewest completions in: <strong>${CAT_ICONS[weakCat]} ${weakCat}</strong>. Balance your growth, Hunter.</div>
+      <div class="weak-msg">Fewest completions: <strong>${CAT_ICONS[weakCat]} ${weakCat}</strong> (${S.catDone[weakCat]||0} done). Balance your growth.</div>
     </div>
   `;
 }
 
 function renderLog(){
-  const l=document.getElementById('logList');
-  l.innerHTML='';
+  const l=document.getElementById('logList'); l.innerHTML='';
   if(!S.log.length){ l.innerHTML=`<div class="empty">NO LOG ENTRIES</div>`; return; }
   S.log.forEach(e=>{
-    const d=document.createElement('div');
-    d.className='log-entry';
+    const d=document.createElement('div'); d.className='log-entry';
     d.innerHTML=`<span class="lt">[${e.t}]</span>${e.m}`;
     l.appendChild(d);
   });
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // ACTIONS
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function addQuest(){
   const name=document.getElementById('qname').value.trim();
-  if(!name) return;
+  if(!name){ showToast('ENTER A QUEST NAME','red'); return; }
   const diff=document.getElementById('qdiff').value;
   const cat=document.getElementById('qcat').value;
   const dlVal=document.getElementById('qdeadlineIn').value;
   const deadline=dlVal?new Date(dlVal).getTime():null;
-
+  if(repeatOn&&!deadline){ showToast('SET A TIME FOR DAILY QUEST','red'); return; }
   S.quests.unshift({
     id:Date.now().toString(), name, diff, cat,
-    deadline, done:false, penalized:false,
+    deadline, done:false, penalized:false, repeat:repeatOn,
     createdAt:Date.now()
   });
   document.getElementById('qname').value='';
   document.getElementById('qdeadlineIn').value='';
-  addLog(`Quest registered: "${name}" [${diff}] ${cat}`);
+  // Reset repeat toggle
+  repeatOn=false;
+  document.getElementById('repeatRow').classList.remove('on');
+  document.getElementById('repeatToggle').classList.remove('on');
+  addLog(`Quest registered: "${name}" [${diff}] ${cat}${repeatOn?' 🔁 DAILY':''}`);
   save(S); render();
-  showToast(`QUEST ADDED — ${diff}-RANK`);
+  showToast(`QUEST ADDED — ${diff}-RANK${repeatOn?' 🔁':''}`, repeatOn?'':'');
 }
 
 function completeQ(id){
   const q=S.quests.find(q=>q.id===id);
   if(!q||q.done) return;
   q.done=true;
-
-  const baseXP=XP_DIFF[q.diff];
   const mult=getModeXPMult()*(1+getStreakBonus());
-  const xp=Math.floor(baseXP*mult);
+  const xp=Math.floor(XP_DIFF[q.diff]*mult);
   const sp=SP_DIFF[q.diff];
-
   S.xp+=xp; S.sp+=sp;
   S.totalDone++; S.todayDone++; S.todayXp+=xp;
+  S.lifetimeXp=(S.lifetimeXp||0)+xp;
+  // Category stat
+  const sk=CATS_STAT[q.cat];
+  if(sk) S.stats[sk]++;
+  // Category count
+  if(!S.catDone) S.catDone={};
+  S.catDone[q.cat]=(S.catDone[q.cat]||0)+1;
+  // Repeat / S-rank / grind counters
+  if(q.repeat) S.totalRepeatDone=(S.totalRepeatDone||0)+1;
+  if(q.diff==='S') S.sRankDone=(S.sRankDone||0)+1;
+  if(S.mode==='grind') S.grindDone=(S.grindDone||0)+1;
 
-  // Stat bonus for category
-  const statKey=CATS_STAT[q.cat];
-  if(statKey) S.stats[statKey]++;
+  const eff=Math.round((mult-1)*100);
+  addLog(`Quest cleared: "${q.name}" | <span class="lxp">+${xp} XP</span>${eff>0?` (${eff}% BONUS)`:''} | +${sp} SP`);
 
-  addLog(`Quest cleared: "${q.name}" | <span class="lxp">+${xp} XP</span> | +${sp} SP | ${q.cat} stat+1`);
-
-  let leveled=false, newRank=false;
+  let leveled=false;
   const oldRi=Math.min(Math.floor((S.level-1)/5),RANKS.length-1);
   while(S.xp>=XPneeded(S.level)){
     S.xp-=XPneeded(S.level); S.level++; S.sp+=5;
@@ -957,16 +1106,10 @@ function completeQ(id){
     leveled=true;
   }
   const newRi=Math.min(Math.floor((S.level-1)/5),RANKS.length-1);
-  if(newRi>oldRi) newRank=true;
 
-  checkAchieves();
-  save(S);
-
-  if(leveled) triggerLU(newRank?RANKS[newRi]:null);
-  else{
-    const eff=Math.round((mult-1)*100);
-    showToast(`QUEST CLEARED — +${xp} XP${eff>0?` (${eff}% BONUS)`:''}`, 'gold');
-  }
+  checkAchieves(); save(S);
+  if(leveled) triggerLU(newRi>oldRi?RANKS[newRi]:null);
+  else showToast(`QUEST CLEARED — +${xp} XP`,'gold');
   render();
 }
 
@@ -985,23 +1128,9 @@ function addStat(key){
 function cycleMode(){
   const i=MODES.indexOf(S.mode);
   S.mode=MODES[(i+1)%MODES.length];
-  addLog(`Mode switched → ${S.mode.toUpperCase()} | ${MODE_MSGS[S.mode]}`);
-  showToast(`${S.mode.toUpperCase()} MODE ACTIVATED`);
+  addLog(`Mode switched → ${S.mode.toUpperCase()}`);
+  showToast(`${S.mode.toUpperCase()} MODE`);
   save(S); render();
-}
-
-function filterQ(f,btn){
-  qFilter=f;
-  document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderQuests();
-}
-
-function filterCat(c,btn){
-  catFilter=c;
-  document.querySelectorAll('.cpill').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  renderQuests();
 }
 
 function editName(){
@@ -1015,30 +1144,32 @@ function saveName(){
   save(S); render();
 }
 
-// ═══════════════════════════════════════════════════════════════════
+function filterQ(f,btn){ qFilter=f; document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderQuests(); }
+function filterCat(c,btn){ catFilter=c; document.querySelectorAll('.cpill').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderQuests(); }
+
+// ═══════════════════════════════════════════════════════════
 // ACHIEVEMENTS
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function checkAchieves(){
   ACHIEVES.forEach(a=>{
     if(!S.achievements.includes(a.id)&&a.cond(S)){
       S.achievements.push(a.id);
-      showToast(`🏆 TITLE UNLOCKED: ${a.name}`,'gold');
-      addLog(`<span class="lxp">Achievement unlocked: ${a.name}</span>`);
-      sendNotif('🏆 ACHIEVEMENT UNLOCKED',a.name+' — '+a.desc);
+      showToast(`🏆 ${a.name} UNLOCKED`,'gold');
+      addLog(`<span class="lxp">Achievement: ${a.name}</span>`);
+      sendNotif('🏆 ACHIEVEMENT UNLOCKED',`${a.name} — ${a.desc}`);
     }
   });
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // LEVEL UP
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 function triggerLU(newRank){
-  const o=document.getElementById('lvlup');
   document.getElementById('lu-num').textContent=S.level;
-  document.getElementById('lu-sub').textContent=`ALL STATS +1 | +5 STAT POINTS`;
-  document.getElementById('lu-rank').textContent=newRank?`RANK UP → ${newRank}`:'';
+  document.getElementById('lu-sub').textContent='ALL STATS +1 | +5 STAT POINTS';
+  document.getElementById('lu-rank').textContent=newRank?`▲ RANK UP → ${newRank}`:'';
   document.getElementById('lu-rank').style.color=newRank?'var(--gold)':'transparent';
-  o.classList.add('show');
+  document.getElementById('lvlup').classList.add('show');
   spawnParticles();
   sendNotif('▲ LEVEL UP!',`You reached Level ${S.level}. Keep pushing, Hunter.`);
 }
@@ -1049,10 +1180,8 @@ function dismissLU(){
 function spawnParticles(){
   const cx=window.innerWidth/2, cy=window.innerHeight/2;
   for(let i=0;i<60;i++){
-    const p=document.createElement('div');
-    p.className='particle';
-    const a=Math.random()*Math.PI*2;
-    const d=80+Math.random()*280;
+    const p=document.createElement('div'); p.className='particle';
+    const a=Math.random()*Math.PI*2, d=80+Math.random()*280;
     p.style.left=cx+'px'; p.style.top=cy+'px';
     p.style.setProperty('--tx',Math.cos(a)*d+'px');
     p.style.setProperty('--ty',Math.sin(a)*d+'px');
@@ -1063,25 +1192,23 @@ function spawnParticles(){
   }
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // HELPERS
-// ═══════════════════════════════════════════════════════════════════
-function getModeXPMult(){ return MODE_XP_MULT[S.mode]||1; }
-function getStreakBonus(){ return Math.min(S.streak*0.02, 0.5); } // 2% per day, max 50%
+// ═══════════════════════════════════════════════════════════
+function getModeXPMult(){ return MODE_XP[S.mode]||1; }
+function getStreakBonus(){ return Math.min(S.streak*0.02,0.5); }
 
-function showToast(msg, type=''){
+function showToast(msg,type=''){
   const t=document.getElementById('toast');
   t.innerHTML=msg; t.className='toast'+(type?' '+type:'');
-  t.style.display='block';
-  clearTimeout(t._t);
+  t.style.display='block'; clearTimeout(t._t);
   t._t=setTimeout(()=>t.style.display='none',2800);
 }
 
 function addLog(msg){
   const now=new Date();
   const tm=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
-  S.log.unshift({t:tm,m:msg});
-  S.log=S.log.slice(0,150);
+  S.log.unshift({t:tm,m:msg}); S.log=S.log.slice(0,200);
 }
 
 function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
@@ -1094,13 +1221,13 @@ function goPage(name,btn){
   document.getElementById('mainContent').scrollTop=0;
 }
 
-// ═══════════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════════════
 // INIT
-// ═══════════════════════════════════════════════════════════════════
-if(!S.log.length) addLog('System online. Welcome, Hunter. Begin your ascent.');
+// ═══════════════════════════════════════════════════════════
+if(!S.log.length) addLog('System v3 online. Welcome, Hunter.');
+else addLog('System v3 loaded. Data migration complete. All progress preserved.');
 render();
 
-// Service Worker
 if('serviceWorker' in navigator){
   navigator.serviceWorker.register('sw.js').catch(()=>{});
 }
