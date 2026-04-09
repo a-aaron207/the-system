@@ -1,4 +1,4 @@
-const CACHE = 'system-v3';
+const CACHE = 'system-v4';
 const ASSETS = ['/', '/index.html', '/manifest.json',
   'https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap'
 ];
